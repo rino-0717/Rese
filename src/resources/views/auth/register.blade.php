@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/auth/register.css')}}">
@@ -10,7 +10,7 @@
             <h2>Registration</h2>
             <form>
                 <div class="input-group">
-                    <i class="fas fa-user"></i>
+                    <i class="fa-solid fa-user"></i>
                     <input type="text" placeholder="Username" required>
                 </div>
                 <div class="input-group">
@@ -27,5 +27,6 @@
             </form>
         </div>
     </div>
+    <script src="https://fontawesome.com/search?q=user&o=r" crossorigin="anonymous"></script>
 @endsection('content')
 </html>

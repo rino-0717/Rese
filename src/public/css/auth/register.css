@@ -1,25 +1,26 @@
 .form-container {
-    background-color: white;
+    background: linear-gradient(to bottom, #3477e3 0%, #3477e3 24%, white 0%, white 80%);
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 500px;
+    position: relative;
 }
 
 .form-container h2 {
-    margin-bottom: 20px;
-    background-color: #3477e3;
     color: white;
     padding: 10px;
+    margin: auto;
     border-radius: 5px;
 }
 
 .input-group {
     display: flex;
     align-items: center;
+    margin-top: 18px;
     margin-bottom: 15px;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
+
 }
 
 .input-group i {
@@ -42,7 +43,7 @@
 }
 
 button {
-    background-color: #3477e3;
+    background-color: #3b82f6;
     color: white;
     border: none;
     padding: 10px 20px;
