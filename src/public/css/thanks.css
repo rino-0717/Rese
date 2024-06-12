@@ -1,35 +1,44 @@
-.form-container {
-    background-color: white;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    position: relative;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-container h2 {
-    background-color: #3477e3;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 420px;
+    max-width: 400px;
+    height: 250px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-weight: lighter;
+    font-size: large;
 }
 
 .button-container {
-    display: flex;
-    justify-content: flex-end;
-    /* ボタンを右寄せにする */
+    margin-top: 20px;
 }
 
 button {
-    background-color: #3b82f6;
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 button:hover {
-    background-color: #2563eb;
+    background-color: #0056b3;
 }
