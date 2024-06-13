@@ -44,8 +44,8 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 
 // 飲食店表示
-Route::get('/', [ShopController::class, 'index'])->name('shop.index');
-Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('shop.detail');
+Route::get('/', [ShopController::class, 'index'])->name('shop');
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 // お気に入り
 Route::post('/favorite', [FavoriteController::class, 'create'])->name('favorite.create');

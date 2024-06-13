@@ -8,7 +8,7 @@
     <div class="container">
         <div class="form-container">
             <h2>Registration</h2>
-            <form class="register-form" action="{{ route('register') }}" method="post">
+            <form class="register-form" action="{{ route('register.store') }}" method="post">
             @csrf
                 <div class="input-group">
                     <img src="images/user.png" alt="User Icon" style="width: 24px; height: 24px; margin-right: 8px;">
