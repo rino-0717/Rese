@@ -31,7 +31,6 @@
                             @csrf
                             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                             <img src="images/heart.png" alt="Like Icon" style="width: 24px; height: 24px; margin-right: 8px;">
-                            </button>
                         </form>
                     </div>
                 </div>
