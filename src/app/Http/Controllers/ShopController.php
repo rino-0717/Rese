@@ -172,7 +172,14 @@ class ShopController extends Controller
             ],
         ];
 
-        return view('shop', ['shops' => $shops]);
+        $areas = collect($shops)->pluck('area')->unique();
+        $genres = collect($shops)->pluck('genre')->unique();
+
+        return view('shop', [
+        'shops' => $shops,
+        'areas' => $areas,
+        'genres' => $genres,
+        ]);
     }
 
     public function detail($shop_id)

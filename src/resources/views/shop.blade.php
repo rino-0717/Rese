@@ -10,12 +10,16 @@
             <div class="filters">
                 <select name="area" id="area">
                     <option value="all">All area</option>
-                    <!-- 他のエリアオプションを追加 -->
+                    @foreach($areas as $area)
+                        <option value="{{ $area }}">{{ $area }}</option>
+                    @endforeach
                 </select>
-                <select name="genre" id="genre">
-                    <option value="all">All genre</option>
-                    <!-- 他のジャンルオプションを追加 -->
-                </select>
+            <select name="genre" id="genre">
+                <option value="all">All genre</option>
+                @foreach($genres as $genre)
+                    <option value="{{ $genre }}">{{ $genre }}</option>
+                @endforeach
+            </select>
                 <input type="text" placeholder="Search ...">
             </div>
         </div>

@@ -1,19 +1,22 @@
-@extends('layouts.base')
-
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/done.css')}}">
-@section('css')
-
-@section('content')
-    <div class="container">
-        <div class="form-container">
-            <h2>会員登録ありがとうございます</h2>
-            <form>
-                <div class="button-container">
-                    <button type="submit">ログインする</button>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/menu.css')}}">
+    <title>menu</title>
+</head>
+<body>
+    <div class="menu-container">
+        <button class="close-button">&times;</button>
+        <div class="menu-items">
+            <a href="{{ route('shop.index') }}">Home</a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="logout-button">Logout</button>
             </form>
+            <a href="{{ route('mypage.index') }}">Mypage</a>
         </div>
     </div>
-@endsection('content')
+</body>
 </html>

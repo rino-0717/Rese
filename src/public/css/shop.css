@@ -28,10 +28,10 @@ h1 {
 
 .filters select,
 .filters input {
-    margin-left: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+	overflow: hidden;
+	width: 90%;
+	margin: 2em auto;
+	text-align: left;
 }
 
 .shop-list {
@@ -98,16 +98,18 @@ h1 {
     background-color: #0056b3;
 }
 
-.favorite-button img{
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    background-color: rgb(232, 226, 226);
-    color: #ff0000;
-    float: right;
+.like-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #808080;
+    margin-left: 20px;
 }
 
-.favorite-button .fa-heart {
-    color: #ff0000;
+.unlike-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #e54747;
+    margin-left: 20px;
 }
