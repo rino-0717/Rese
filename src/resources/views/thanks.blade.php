@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.header')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">

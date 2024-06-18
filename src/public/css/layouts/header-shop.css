@@ -1,0 +1,82 @@
+body {
+    background-color: #f0f0f0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 必要に応じて調整 */
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 50px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #3477e3;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.logo-icon .line1 {
+    width: 30%;
+    height: 1px;
+    background-color: white;
+    margin: 12px;
+}
+
+.logo-icon .line2 {
+    width: 50%;
+    height: 1px;
+    background-color: white;
+    margin: 12px;
+}
+
+.logo-icon .line3 {
+    width: 25%;
+    height: 1px;
+    background-color: white;
+    margin: 12px;
+}
+
+.logo-text {
+    font-size: 24px;
+    color: #3477e3;
+    font-weight: bold;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+}
+
+.large-select {
+    width: 200px;
+    /* 必要に応じて調整 */
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    /* 選択ボックス間のスペース */
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    /* フィルター間のスペース */
+}

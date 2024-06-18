@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    public function create(Request $request)
+    public function create(ReservationRequest $request)
     {
-        // 予約登録処理のロジックをここに記述
+        // 予約作成のロジックをここに記述
+        return redirect()->route('reserve.complete');
     }
 
     public function completePage()
@@ -17,7 +18,7 @@ class ReservationController extends Controller
         return view('/done');
     }
 
-    public function delete(Request $request)
+    public function delete(ReservationRequest $request)
     {
         // 予約取り消し処理のロジックをここに記述
     }

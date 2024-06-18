@@ -1,37 +1,8 @@
-
-
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-
-}
-
-h1 {
-    font-size: 24px;
-    color: #007bff;
-}
-
-.filters {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.filters select,
-.filters input {
-	overflow: hidden;
-	width: 90%;
-	margin: 2em auto;
-	text-align: left;
 }
 
 .shop-list {
@@ -98,18 +69,46 @@ h1 {
     background-color: #0056b3;
 }
 
-.like-btn {
-    width: 25px;
-    height: 30px;
-    font-size: 25px;
-    color: #808080;
-    margin-left: 20px;
+.details-button {
+    text-align: left;
+    margin-right: 10px;
 }
 
-.unlike-btn {
-    width: 25px;
-    height: 30px;
-    font-size: 25px;
-    color: #e54747;
-    margin-left: 20px;
+.shop-info button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.shop-info button:hover {
+    background-color: #0056B3;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.large-select {
+    width: 200px; /* Adjust the width as needed */
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10px; /* Add some space between selects */
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.like-btn, .unlike-btn {
+    font-size: 24px;
+    color: red;
 }

@@ -19,26 +19,16 @@ class RegisteredUserController extends Controller
     }
 
     // ユーザー新規登録処理
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        // バリデーション
-        $validatedData = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-
-        // ユーザー作成
-        $user = \App\Models\User::create([
-            'name' => $request->name,
+        $user = User::create([
+            'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        // ログイン
         Auth::login($user);
 
-        // 完了ページへリダイレクト
         return redirect()->route('register.complete');
     }
 

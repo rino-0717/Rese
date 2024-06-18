@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.header')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="user-info">
-            <h2>testさん</h2>
+            <h2>{{ $user->name }}さん</h2>
         </div>
         <div class="content">
             <div class="reservation-status">
@@ -25,18 +25,22 @@
                     </div>
                 </div>
             </div>
-            <div class="favorite-shops">
-                <h3>お気に入り店舗</h3>
-                <div class="shop-card">
-                    <img src="path/to/shop1.jpg" alt="Shop 1">
-                    <div class="shop-info">
-                        <h2>仙人</h2>
-                        <p>#東京都 #寿司</p>
-                        <button class="details-button">詳しく見る</button>
-                        <img src="path/to/heart.png" alt="Like Icon" class="like-icon">
-                    </div>
+            @if ($favoriteShops->isNotEmpty())
+                <div class="favorite-shops">
+                    <h3>お気に入り店舗</h3>
+                    @foreach ($favoriteShops as $shop)
+                        <div class="shop-card">
+                            <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
+                            <div class="shop-info">
+                                <h2>{{ $shop->name }}</h2>
+                                <p>#{{ $shop->area }} #{{ $shop->genre }}</p>
+                                <button class="details-button">詳しく見る</button>
+                                <img src="path/to/heart.png" alt="Like Icon" class="like-icon">
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 @endsection
