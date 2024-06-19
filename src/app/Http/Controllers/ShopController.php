@@ -23,7 +23,7 @@ class ShopController extends Controller
 
     public function detail($shop_id)
     {
-        // 飲食店詳細ページ表示のロジックをここに記述
+        $shop = Shop::findOrFail($shop_id);
         return view('detail', ['shop_id' => $shop_id]);
     }
 }

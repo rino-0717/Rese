@@ -15,7 +15,7 @@
                             <p>#{{ $shop->area }} #{{ $shop->genre }}</p>
                             <div class="button-container">
                                 <button type="submit" class="details-button">詳しく見る</button>
-                                <button class="like-button" data-shop-id="{{ $shop->id }}">
+                                <button class="goodBtn" data-shop-id="{{ $shop->id }}">
                                     @if ($shop->like_users->contains(auth()->user()))
                                         <i class="fas fa-heart unlike-btn"></i>
                                     @else

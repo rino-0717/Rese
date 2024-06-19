@@ -19,14 +19,13 @@ class LoginRequest extends FormRequest
         ];
     }
 
-        public function messages()
+    public function messages()
     {
         return [
             'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'メールアドレスのアカウントが見つかりません',
-            'email.exists' => 'メールアドレスが正しくありません',
-            'password.required'=> 'パスワードを入力してください',
-            'password.unique'=> 'パスワードが正しくありません。',
+            'email.email' => '有効なメールアドレスを入力してください',
+            'password.required' => 'パスワードを入力してください',
+            'password.min' => 'パスワードは8文字以上で入力してください',
         ];
     }
 }

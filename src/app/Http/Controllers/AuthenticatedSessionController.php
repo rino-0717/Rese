@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -19,11 +20,12 @@ class AuthenticatedSessionController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return redirect()->intended('shop');
+                return redirect()->intended('/');
             }
 
             return back()->withErrors([
-                'email' => '提供された資格情報は記録と一致しません。',
+                'email' => 'メールアドレスが一致しません',
+                'password' => 'パスワードが一致しません',
             ]);
         }
 
@@ -34,6 +36,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

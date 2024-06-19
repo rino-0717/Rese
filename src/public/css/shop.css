@@ -1,8 +1,8 @@
 .container {
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f0f0f0;
 }
 
 .shop-list {
@@ -47,68 +47,33 @@
     text-align: left;
 }
 
-.shop-info {
-    text-align: left;
-}
-
-.details-button {
-    text-align: left;
-}
-
 .shop-info button {
-    background-color: #007bff;
+    background-color: #3477e3;
     color: white;
     border: none;
     padding: 10px 20px;
+    margin-right: 11px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
 }
 
 .shop-info button:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
 }
-
-.details-button {
-    text-align: left;
-    margin-right: 10px;
-}
-
-.shop-info button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.shop-info button:hover {
-    background-color: #0056B3;
-}
-
-.button-container {
-    display: flex;
-    align-items: center;
-    gap: 100px;
-}
-
-.large-select {
-    width: 200px; /* Adjust the width as needed */
-    padding: 10px;
-    font-size: 16px;
-    margin-left: 10px; /* Add some space between selects */
-}
-
-.like-button {
+.goodBtn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
+    margin: 0;
 }
 
-.like-btn, .unlike-btn {
+.goodBtn .fa-heart {
     font-size: 24px;
-    color: red;
+    color: #ccc;
+}
+
+.goodBtn.active .fa-heart {
+    color: #e74c3c;
 }
