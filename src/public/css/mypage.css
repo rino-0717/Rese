@@ -1,20 +1,12 @@
 .container {
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    background-color: #f0f0f0;
 }
 
 .user-info h2 {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
 }
@@ -28,6 +20,7 @@
 .reservation-status,
 .favorite-shops {
     width: 48%;
+    margin: 10px;
 }
 
 .reservation-status h3,
@@ -38,7 +31,7 @@
 }
 
 .reservation-card {
-    background-color: #3b49df;
+    background-color: #3477e3;
     color: #fff;
     padding: 20px;
     border-radius: 8px;

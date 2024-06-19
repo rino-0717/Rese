@@ -1,5 +1,4 @@
 @extends('layouts.header')
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
@@ -25,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            @if ($favoriteShops->isNotEmpty())
+            @if ($favoriteShops && $favoriteShops->isNotEmpty())
                 <div class="favorite-shops">
                     <h3>お気に入り店舗</h3>
                     @foreach ($favoriteShops as $shop)
