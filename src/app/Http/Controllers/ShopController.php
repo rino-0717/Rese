@@ -13,7 +13,7 @@ class ShopController extends Controller
 
         $areas = $shops->pluck('area')->unique();
         $genres = $shops->pluck('genre')->unique();
-
+        $shops = Shop::with('like_users')->get();
         return view('shop', [
             'shops' => $shops,
             'areas' => $areas,

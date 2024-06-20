@@ -13,7 +13,8 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->string('area');
             $table->string('genre');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
+            $table->text('introduction')->nullable();
             $table->timestamps();
         });
     }

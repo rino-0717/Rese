@@ -10,12 +10,12 @@
     <div class="menu-container">
         <button class="close-button">&times;</button>
         <div class="menu-items">
-            <a href="{{ route('shop.index') }}">Home</a>
+            <a href="{{ route('shop') }}">Home</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="logout-button">Logout</button>
             </form>
-            <a href="{{ route('mypage.index') }}">Mypage</a>
+            <a href="{{ route('mypage') }}">Mypage</a>
         </div>
     </div>
 </body>

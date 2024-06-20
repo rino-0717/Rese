@@ -11,10 +11,11 @@ main {
     font-family: Arial, sans-serif;
 }
 
-.logo {
+a .logo {
     display: flex;
     align-items: center;
     margin: 50px;
+    text-decoration: none;
 }
 
 .logo-icon {
@@ -22,24 +23,24 @@ main {
     height: 50px;
     background-color: #3477e3;
     border-radius: 5px;
-    margin-right: 10px;
+    margin: 20px;
 }
 
-.logo-icon .line1 {
+a .logo-icon .line1 {
     width: 30%;
     height: 1px;
     background-color: white;
     margin: 12px;
 }
 
-.logo-icon .line2 {
+a .logo-icon .line2 {
     width: 50%;
     height: 1px;
     background-color: white;
     margin: 12px;
 }
 
-.logo-icon .line3 {
+a .logo-icon .line3 {
     width: 25%;
     height: 1px;
     background-color: white;
@@ -50,4 +51,10 @@ main {
     font-size: 24px;
     color: #3477e3;
     font-weight: bold;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
 }

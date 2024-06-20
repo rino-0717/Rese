@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    margin-top: 15px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
 }
@@ -54,4 +55,12 @@ button {
 
 button:hover {
     background-color: #2563eb;
+}
+
+/* エラーメッセージのスタイル */
+.login-form__error-message {
+    color: #3b82f6;
+    font-size: 14px;
+    margin-top: 5px;
+    /* メッセージと入力フィールドの間にスペースを追加 */
 }

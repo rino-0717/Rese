@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,5 @@ Route::post('/reserve', [ReservationController::class, 'create'])->name('reserve
 Route::get('/done', [ReservationController::class, 'completePage'])->name('reserve.complete');
 Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('reserve.delete');
 
+//メニューページ
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
