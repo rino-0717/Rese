@@ -13,14 +13,20 @@
 </head>
 
 <body>
-    <a href="{{ route('menu') }}" class="logo">
-        <div class="logo-icon">
+    <header>
+        @if(Auth::check())
+            <a href="{{ route('menu') }}" class="logo">
+        @else
+            <a href="{{ route('menu2') }}" class="logo">
+        @endif
+            <div class="logo-icon">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
-        </div>
-        <div class="logo-text">Rese</div>
-    </a>
+            </div>
+            <div class="logo-text">Rese</div>
+        </a>
+    </header>
     <main>
         @yield('content')
     </main>

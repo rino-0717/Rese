@@ -29,13 +29,12 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-    public function destroy(LoginRequest $request)
+    public function destroy(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->route('login.create')->with('status', 'ログアウトしました');
     }
 }

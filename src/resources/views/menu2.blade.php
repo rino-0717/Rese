@@ -8,11 +8,11 @@
 </head>
 <body>
     <div class="menu-container">
-        <button class="close-button">&times;</button>
+        <button class="close-button" onclick="window.history.back();">&times;</button>
         <div class="menu-items">
-            <a href="{{ route('shop.index') }}">Home</a>
-            <a href="{{ route('mypage.index') }}">Registration</a>
-            <a href="{{ route('mypage.index') }}">Login</a>
+            <a href="{{ route('shop') }}">Home</a>
+            <a href="{{ route('register.create') }}">Registration</a>
+            <a href="{{ route('login.create') }}">Login</a>
         </div>
     </div>
 </body>

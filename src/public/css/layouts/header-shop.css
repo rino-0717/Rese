@@ -1,15 +1,35 @@
+body {
+    background-color: #f0f0f0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    margin: 10px;
+    margin-left: 18%;
     background-color: #f0f0f0;
 }
-
 .logo {
     display: flex;
     align-items: center;
-    margin: 20px;
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 24px;
+    color: #3477e3;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
 }
 
 .logo-icon {
@@ -17,35 +37,36 @@
     height: 50px;
     background-color: #3477e3;
     border-radius: 5px;
-    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-icon .line1,
+.logo-icon .line2,
+.logo-icon .line3 {
+    position: absolute;
+    height: 2px;
+    background-color: white;
 }
 
 .logo-icon .line1 {
-    width: 30%;
-    height: 1px;
-    background-color: white;
-    margin: 12px;
+    top: 15px;
+    width: 17px;
+    margin-right: 13px;
 }
 
 .logo-icon .line2 {
-    width: 50%;
-    height: 1px;
-    background-color: white;
-    margin: 12px;
+    top: 24px;
+    width: 26px;
+    margin-right: 6px;
 }
 
 .logo-icon .line3 {
-    width: 25%;
-    height: 1px;
-    background-color: white;
-    margin: 12px;
-}
-
-.logo-text {
-    font-size: 24px;
-    color: #3477e3;
-    font-weight: bold;
-    margin-left: auto;
+    top: 33px;
+    width: 14px;
+    margin-right: 16px;
 }
 
 .filters {

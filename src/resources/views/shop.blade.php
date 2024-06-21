@@ -16,10 +16,10 @@
                             <div class="button-container">
                                 <button type="submit" class="details-button">詳しく見る</button>
                                 <button class="goodBtn" data-shop-id="{{ $shop->id }}">
-                                    @if ($shop->like_users->contains(auth()->user()))
-                                        <i class="fas fa-heart unlike-btn"></i>
+                                    @if ($shop->favorite_shops->contains(auth()->user()))
+                                        <i v-if="shop.is_liked" class="fas fa-heart" @click="pushLike(shop)"></i>
                                     @else
-                                        <i class="far fa-heart like-btn"></i>
+                                        <i v-else class="far fa-heart" @click="pushLike(shop)"></i>
                                     @endif
                                 </button>
                             </div>

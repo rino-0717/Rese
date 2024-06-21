@@ -22,7 +22,7 @@ class Shop extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function favorites()
+    public function favorite_shops()
     {
         return $this->hasMany(Favorite::class);
     }

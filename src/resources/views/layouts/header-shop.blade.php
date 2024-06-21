@@ -13,31 +13,33 @@
 </head>
 
 <body>
-    <div class="header-container">
-        <div class="logo">
+    <header>
+        <a href="{{ auth()->check() ? route('menu') : route('menu2') }}" class="logo">
             <div class="logo-icon">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
             <div class="logo-text">Rese</div>
+        </a>
+        <div class="header-container">
+            <div class="filters">
+                <select name="area" id="area" class="large-select">
+                    <option value="all">All area</option>
+                    @foreach($areas as $area)
+                        <option value="{{ $area }}">{{ $area }}</option>
+                    @endforeach
+                </select>
+                <select name="genre" id="genre" class="large-select">
+                    <option value="all">All genre</option>
+                    @foreach($genres as $genre)
+                        <option value="{{ $genre }}">{{ $genre }}</option>
+                    @endforeach
+                </select>
+                <input type="text" placeholder="Search ...">
+            </div>
         </div>
-        <div class="filters">
-            <select name="area" id="area" class="large-select">
-                <option value="all">All area</option>
-                @foreach($areas as $area)
-                    <option value="{{ $area }}">{{ $area }}</option>
-                @endforeach
-            </select>
-            <select name="genre" id="genre" class="large-select">
-                <option value="all">All genre</option>
-                @foreach($genres as $genre)
-                    <option value="{{ $genre }}">{{ $genre }}</option>
-                @endforeach
-            </select>
-            <input type="text" placeholder="Search ...">
-        </div>
-    </div>
+    </header>
     <main>
         @yield('content')
     </main>

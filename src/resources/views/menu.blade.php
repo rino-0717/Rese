@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="menu-container">
-        <button class="close-button">&times;</button>
+        <button class="close-button" onclick="window.history.back();">&times;</button>
         <div class="menu-items">
             <a href="{{ route('shop') }}">Home</a>
             <form action="{{ route('logout') }}" method="POST">

@@ -10,16 +10,16 @@
 .close-button {
     position: absolute;
     top: 20px;
-    left: 20px;
-    background-color: #3b49df;
-    color: #fff;
+    color: white;
+    background-color: #3477e3;
     border: none;
-    border-radius: 50%;
+    border-radius: 5px;
     width: 40px;
     height: 40px;
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 80%;
 }
 
 .menu-items {
@@ -31,7 +31,7 @@
 .menu-items a,
 .menu-items .logout-button {
     font-size: 24px;
-    color: #3b49df;
+    color: #3477e3;
     text-decoration: none;
     margin: 10px 0;
     cursor: pointer;
@@ -42,7 +42,7 @@
 
 .menu-items .logout-button {
     font-size: 24px;
-    color: #3b49df;
+    color: #3477e3;
     text-decoration: none;
     margin: 10px 0;
     cursor: pointer;

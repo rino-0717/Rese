@@ -64,3 +64,10 @@ button:hover {
     margin-top: 5px;
     /* メッセージと入力フィールドの間にスペースを追加 */
 }
+
+.alert {
+    color: #3b82f6;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}

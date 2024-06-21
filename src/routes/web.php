@@ -9,6 +9,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\Menu2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,4 @@ Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('
 
 //メニューページ
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+Route::get('/menu2', [Menu2Controller::class, 'index'])->name('menu2');
