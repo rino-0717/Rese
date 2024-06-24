@@ -21,9 +21,19 @@ class ShopController extends Controller
         ]);
     }
 
-    public function detail($shop_id)
+    public function show($id)
     {
-        $shop = Shop::findOrFail($shop_id);
-        return view('detail', ['shop_id' => $shop_id]);
+        $shop = Shop::findOrFail($id);
+        $shops = Shop::all();
+        $areas = $shops->pluck('area')->unique();
+        $genres = $shops->pluck('genre')->unique();
+        $introductions = $shop->introductions;
+        return view('detail', [
+            'shop' => $shop,
+            'shops' => $shops,
+            'areas' => $areas,
+            'genres' => $genres,
+            'introductions' => $introductions,
+        ]);
     }
 }

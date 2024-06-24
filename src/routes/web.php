@@ -47,13 +47,14 @@ Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 
 // 飲食店表示
 Route::get('/', [ShopController::class, 'index'])->name('shop');
-Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
+Route::get('/{id}', [ShopController::class, 'show'])->name('detail');
 
 // お気に入り
 Route::post('/favorite', [FavoriteController::class, 'create'])->name('favorite.create');
 Route::post('/favorite/delete', [FavoriteController::class, 'delete'])->name('favorite.delete');
 
 // 予約
+Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 Route::post('/reserve', [ReservationController::class, 'create'])->name('reserve.create');
 Route::get('/done', [ReservationController::class, 'completePage'])->name('reserve.complete');
 Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('reserve.delete');
