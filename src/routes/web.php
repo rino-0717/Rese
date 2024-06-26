@@ -56,7 +56,7 @@ Route::post('/favorite/delete', [FavoriteController::class, 'delete'])->name('fa
 // 予約
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 Route::post('/reserve', [ReservationController::class, 'create'])->name('reserve.create');
-Route::get('/done', [ReservationController::class, 'completePage'])->name('reserve.complete');
+Route::get('/done', [ReservationController::class, 'completePage'])->name('done');
 Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('reserve.delete');
 
 //メニューページ

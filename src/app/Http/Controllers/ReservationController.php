@@ -3,13 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservationRequest;
+use Illuminate\Http\Request;
+use App\Models\Reservation;
 
 class ReservationController extends Controller
 {
-    public function create(ReservationRequest $request)
+        public function store(Request $request)
     {
-        // 予約作成のロジックをここに記述
-        return redirect()->route('reserve.complete');
+        // バリデーション
+        $request->validate([
+            'shop_id' => 'required|exists:shops,id',
+            'date' => 'required|date|after_or_equal:today',
+            'time' => 'required',
+            'number_of_people' => 'required|integer|min:1',
+        ]);
+
+        // 予約データの保存
+        $reservation = new Reservation();
+        $reservation->shop_id = $request->input('shop_id');
+        $reservation->date = $request->input('date');
+        $reservation->time = $request->input('time');
+        $reservation->number = $request->input('number');
+        $reservation->save();
+
+        // 完了ページにリダイレクト
+        return redirect()->route('done');
     }
 
     public function completePage()

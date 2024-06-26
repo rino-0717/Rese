@@ -42,7 +42,9 @@
                     <label for="date"></label>
                     <input type="date" id="date" name="date" required>
                     <label for="time"></label>
-                    <input type="time" id="time" name="time" required>
+                    <select id="time" name="time" required>
+                        <!-- JavaScriptでオプションを動的に生成 -->
+                    </select>
                     <label for="number"></label>
                     <select id="number" name="number" required>
                         <option value="1">1人</option>
@@ -78,6 +80,28 @@
         });
         document.getElementById('number').addEventListener('change', function() {
             document.getElementById('summary-number').textContent = this.options[this.selectedIndex].text;
+        });
+
+        // 今日以前の日付を無効にする
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+         // 9時から21時までの30分単位でオプションを生成
+        const timeSelect = document.getElementById('time');
+        for (let hour = 9; hour <= 21; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+                const option = document.createElement('option');
+                const time = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+                option.value = time;
+                option.textContent = time;
+                timeSelect.appendChild(option);
+            }
+        }
+
+        // 予約するボタンを押したら、done.blade.phpに遷移する
+        document.getElementById('reservation-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            this.submit(); // フォームを送信
         });
     </script>
 </body>
