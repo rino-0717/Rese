@@ -36,4 +36,20 @@ class ShopController extends Controller
             'introductions' => $introductions,
         ]);
     }
+
+    public function like(Request $request)
+    {
+        $shop = Shop::find($request->shop_id);
+        $shop->favorite_shops()->attach(auth()->user()->id);
+
+        return response()->json(['success' => true]);
+    }
+
+    public function unlike(Request $request)
+    {
+        $shop = Shop::find($request->shop_id);
+        $shop->favorite_shops()->detach(auth()->user()->id);
+
+        return response()->json(['success' => true]);
+    }
 }

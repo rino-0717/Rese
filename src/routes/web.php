@@ -48,6 +48,8 @@ Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 // 飲食店表示
 Route::get('/', [ShopController::class, 'index'])->name('shop');
 Route::get('/{id}', [ShopController::class, 'show'])->name('detail');
+Route::post('/like', [ShopController::class, 'like'])->name('shop.like');
+Route::post('/unlike', [ShopController::class, 'unlike'])->name('shop.unlike');
 
 // お気に入り
 Route::post('/favorite', [FavoriteController::class, 'create'])->name('favorite.create');
@@ -61,4 +63,4 @@ Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('
 
 //メニューページ
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
-Route::get('/menu2', [Menu2Controller::class, 'index'])->name('menu2');
+Route::get('/menu2', [MenuController::class, 'index2'])->name('menu2');

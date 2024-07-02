@@ -69,8 +69,6 @@
             </div>
         </div>
     </main>
-    @yield('scripts')
-
     <script>
         document.getElementById('date').addEventListener('change', function() {
             document.getElementById('summary-date').textContent = this.value;
@@ -102,6 +100,7 @@
         document.getElementById('reservation-form').addEventListener('submit', function(event) {
             event.preventDefault();
             this.submit(); // フォームを送信
+            window.location.href = "{{ route('done') }}"; // done.blade.phpに遷移
         });
     </script>
 </body>

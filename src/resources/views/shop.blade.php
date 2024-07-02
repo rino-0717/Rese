@@ -17,18 +17,14 @@
                                 @if(auth()->check())
                                     <button type="button" class="details-button" onclick="location.href='{{ route('detail', $shop->id) }}'">詳しく見る</button>
                                 @else
-                                    <button type="button" class="details-button" onclick="location.href='{{ route('login.creat') }}'">詳しく見る</button>
+                                    <button type="button" class="details-button" onclick="location.href='{{ route('login.create') }}'">詳しく見る</button>
                                 @endif
                                 <button class="goodBtn" data-shop-id="{{ $shop->id }}">
-                                    @if ($shop->favorite_shops->contains(auth()->user()))
-                                        @verbatim
-                                        <i v-if="shop.is_liked" class="fas fa-heart" @click="pushLike(shop)"></i>
-                                        @endverbatim
-                                    @else
-                                        @verbatim
-                                        <i v-else class="far fa-heart" @click="pushLike(shop)"></i>
-                                        @endverbatim
-                                    @endif
+                                @if ($shop->favorite_shops->contains(auth()->user()))
+                                    <i class="fas fa-heart" onclick="toggleLike({{ $shop->id }}, true)"></i>
+                                @else
+                                    <i class="far fa-heart" onclick="toggleLike({{ $shop->id }}, false)"></i>
+                                @endif
                                 </button>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ class ReservationController extends Controller
         $reservation->shop_id = $request->input('shop_id');
         $reservation->date = $request->input('date');
         $reservation->time = $request->input('time');
-        $reservation->number = $request->input('number');
+        $reservation->number = $request->input('number_of_people');
         $reservation->save();
 
         // 完了ページにリダイレクト

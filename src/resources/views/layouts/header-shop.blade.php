@@ -36,7 +36,12 @@
                         <option value="{{ $genre }}">{{ $genre }}</option>
                     @endforeach
                 </select>
-                <input type="text" placeholder="Search ...">
+                <form class="search_box">
+                    <div class="search-container">
+                        <img src="images/glass.png" alt="glass icon" class="search-icon">
+                        <input type="text" placeholder="Search ...">
+                    </div>
+                </form>
             </div>
         </div>
     </header>

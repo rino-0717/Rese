@@ -164,6 +164,7 @@ main {
     border: none;
     cursor: pointer;
     height: 45px;
+    margin-bottom: 0px;
 }
 
 .reservation-form button:hover {
