@@ -19,13 +19,9 @@
                                 @else
                                     <button type="button" class="details-button" onclick="location.href='{{ route('login.create') }}'">詳しく見る</button>
                                 @endif
-                                <button class="goodBtn" data-shop-id="{{ $shop->id }}">
-                                @if ($shop->favorite_shops->contains(auth()->user()))
-                                    <i class="fas fa-heart" onclick="toggleLike({{ $shop->id }}, true)"></i>
-                                @else
-                                    <i class="far fa-heart" onclick="toggleLike({{ $shop->id }}, false)"></i>
-                                @endif
-                                </button>
+                                <span class="like-button" data-shop-id="{{ $shop->id }}">
+                                    <i class="fa {{ $shop->isLikedBy(auth()->user()) ? 'fa-heart' : 'fa-heart-o' }}"></i>
+                            </span>
                             </div>
                         </div>
                     </div>

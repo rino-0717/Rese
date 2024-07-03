@@ -1,29 +1,30 @@
-document.addEventListener('DOMContentLoaded', function() {
-    window.toggleLike = function(shopId, isLiked) {
-        const url = isLiked ? '/unlike' : '/like';
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({ shop_id: shopId })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const icon = document.querySelector(`button[data-shop-id="${shopId}"] i`);
-                if (isLiked) {
-                    icon.classList.remove('fas', 'fa-heart');
-                    icon.classList.add('far', 'fa-heart');
-                    icon.setAttribute('onclick', `toggleLike(${shopId}, false)`);
-                } else {
-                    icon.classList.remove('far', 'fa-heart');
-                    icon.classList.add('fas', 'fa-heart');
-                    icon.setAttribute('onclick', `toggleLike(${shopId}, true)`);
+document.addEventListener('DOMContentLoaded', function () {
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const shopId = this.getAttribute('data-shop-id');
+            const icon = this.querySelector('i');
+            const isLiked = icon.classList.contains('fa-heart');
+
+            fetch(`/like/${shopId}`, {
+                method: isLiked ? 'DELETE' : 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Content-Type': 'application/json'
                 }
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'liked') {
+                    icon.classList.remove('fa-heart-o');
+                    icon.classList.add('fa-heart');
+                } else if (data.status === 'unliked') {
+                    icon.classList.remove('fa-heart');
+                    icon.classList.add('fa-heart-o');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
 });

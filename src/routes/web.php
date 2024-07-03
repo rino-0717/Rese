@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\Menu2Controller;
@@ -52,8 +52,8 @@ Route::post('/like', [ShopController::class, 'like'])->name('shop.like');
 Route::post('/unlike', [ShopController::class, 'unlike'])->name('shop.unlike');
 
 // お気に入り
-Route::post('/favorite', [FavoriteController::class, 'create'])->name('favorite.create');
-Route::post('/favorite/delete', [FavoriteController::class, 'delete'])->name('favorite.delete');
+Route::post('/like/{shop}', [LikeController::class, 'like'])->name('like');
+Route::delete('/like/{shop}', [LikeController::class, 'unlike'])->name('unlike');
 
 // 予約
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
@@ -63,4 +63,4 @@ Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('
 
 //メニューページ
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
-Route::get('/menu2', [MenuController::class, 'index2'])->name('menu2');
+Route::get('/menu2', [Menu2Controller::class, 'index'])->name('menu2');

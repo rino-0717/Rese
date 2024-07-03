@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Like;
+use App\Models\Reservation;
+use App\Models\User;
 
 class Shop extends Model
 {
@@ -22,12 +25,17 @@ class Shop extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function favorite_shops()
+    public function likedBy()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(User::class, 'likes');
     }
 
-    public function like_users()
+    public function isLikedBy($user)
+    {
+        return $this->likedBy()->where('user_id', $user->id)->exists();
+    }
+
+    public function favorite_shops()
     {
         return $this->belongsToMany(User::class, 'favorites', 'shop_id', 'user_id');
     }

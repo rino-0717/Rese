@@ -5,6 +5,7 @@ body {
 header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 20px;
     background-color: #f0f0f0;
 }
@@ -12,15 +13,15 @@ header {
 .header-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 10px;
     margin: 10px;
-    margin-left: 125px;
-    background-color: #f0f0f0;
     border: none;
 }
+
 .logo {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     text-decoration: none;
 }
@@ -99,13 +100,11 @@ input[type="text"] {
 
 .search-container .search-icon {
     position: absolute;
-    left: 10px;
-    /* アイコンの左側のスペース */
+    left: 10px; /* アイコンの左側のスペース */
     width: 20px;
     height: 20px;
 }
 
 .search-container input {
-    padding-left: 40px;
-    /* アイコンの幅 + 左側のスペース */
+    padding-left: 40px; /* アイコンの幅 + 左側のスペース */
 }
