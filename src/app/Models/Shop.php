@@ -35,8 +35,4 @@ class Shop extends Model
         return $this->likedBy()->where('user_id', $user->id)->exists();
     }
 
-    public function favorite_shops()
-    {
-        return $this->belongsToMany(User::class, 'favorites', 'shop_id', 'user_id');
-    }
 }
