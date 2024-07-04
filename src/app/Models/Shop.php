@@ -32,7 +32,9 @@ class Shop extends Model
 
     public function isLikedBy($user)
     {
+        if (!$user) {
+            return false;
+        }
         return $this->likedBy()->where('user_id', $user->id)->exists();
     }
-
 }

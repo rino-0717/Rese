@@ -14,14 +14,16 @@
                         <h2>{{ $shop->name }}</h2>
                         <p>#{{ $shop->area }} #{{ $shop->genre }}</p>
                         <div class="button-container">
+                            <button type="button" class="details-button" onclick="location.href='{{ route('detail', $shop->id) }}'">詳しく見る</button>
                             @if(auth()->check())
-                                <button type="button" class="details-button" onclick="location.href='{{ route('detail', $shop->id) }}'">詳しく見る</button>
+                                <span class="like-button" data-shop-id="{{ $shop->id }}">
+                                    <i class="fa {{ $shop->isLikedBy(auth()->user()) ? 'fa-heart' : 'fa-heart-o' }}"></i>
+                                </span>
                             @else
-                                <button type="button" class="details-button" onclick="location.href='{{ route('login.create') }}'">詳しく見る</button>
+                                <span class="like-button">
+                                    <i class="fa fa-heart-o"></i>
+                                </span>
                             @endif
-                            <span class="like-button" data-shop-id="{{ $shop->id }}">
-                                <i class="fa {{ $shop->isLikedBy(auth()->user()) ? 'fa-heart' : 'fa-heart-o' }}"></i>
-                            </span>
                         </div>
                     </div>
                 </div>

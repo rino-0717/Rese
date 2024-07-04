@@ -7,18 +7,12 @@ use App\Models\Shop;
 
 class ShopController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $shops = Shop::all(); // データベースから全てのショップを取得
-
-        $areas = $shops->pluck('area')->unique();
-        $genres = $shops->pluck('genre')->unique();
-        $shops = Shop::with('favorite_shops')->get();
-        return view('shop', [
-            'shops' => $shops,
-            'areas' => $areas,
-            'genres' => $genres,
-        ]);
+        $shops = Shop::with('likedBy')->get();
+        $areas = Shop::select('area')->distinct()->get(); // エリア情報を取得
+        $genres = Shop::select('genre')->distinct()->get(); // ジャンル情報を取得
+        return view('shop', compact('shops', 'areas', 'genres'));
     }
 
     public function show($id)
