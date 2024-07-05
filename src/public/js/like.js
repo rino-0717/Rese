@@ -1,27 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const likeButtons = document.querySelectorAll('.like-button');
+    const likeButtons = document.querySelectorAll('.like_btn');
 
     likeButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const shopId = this.getAttribute('data-shop-id');
-            const icon = this.querySelector('i');
-            const isLiked = icon.classList.contains('fa-heart');
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+            const shopCard = this.closest('.shop-card');
+            const shopId = shopCard.getAttribute('data-shop-id');
 
-            fetch(`/like/${shopId}`, {
-                method: isLiked ? 'DELETE' : 'POST',
+            fetch(`/shop/${shopId}/like`, {
+                method: 'POST',
                 headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ shop_id: shopId })
             })
             .then(response => response.json())
             .then(data => {
-                if (data.status === 'liked') {
-                    icon.classList.remove('fa-heart-o');
-                    icon.classList.add('fa-heart');
-                } else if (data.status === 'unliked') {
-                    icon.classList.remove('fa-heart');
-                    icon.classList.add('fa-heart-o');
+                if (data.success) {
+                    const img = this.querySelector('img');
+                    if (data.liked) {
+                        img.src = '/images/like_red.png'; // 赤いハートの画像に切り替え
+                    } else {
+                        img.src = '/images/like.png'; // 元の画像に戻す
+                    }
+                } else if (data.redirect) {
+                    window.location.href = data.redirect;
                 }
             })
             .catch(error => console.error('Error:', error));

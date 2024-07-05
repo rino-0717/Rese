@@ -10,11 +10,8 @@ class UserController extends Controller
     public function mypage()
     {
         $user = Auth::user();
-        $favoriteShops = $user->favorite_shops; // Assuming you have a relationship defined
-
-        return view('mypage', [
-            'user' => $user,
-            'favoriteShops' => $favoriteShops,
-        ]);
+        $reservations = $user->reservations;
+        $favorites = $user->favorites;
+        return view('mypage', compact('reservations', 'favorites'));
     }
 }

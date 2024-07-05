@@ -6,40 +6,35 @@
 @section('content')
     <div class="container">
         <div class="user-info">
-            <h2>{{ $user->name }}さん</h2>
+            <h1>{{ Auth::user()->name }}さん</h1>
+    <h2>予約状況</h2>
+    <!-- 予約情報を表示 -->
+    @foreach($reservations as $reservation)
+        <div class="reservation-card">
+            <h3>予約{{ $loop->iteration }}</h3>
+            <p>Shop: {{ $reservation->shop->name }}</p>
+            <p>Date: {{ $reservation->date }}</p>
+            <p>Time: {{ $reservation->time }}</p>
+            <p>Number: {{ $reservation->number }}人</p>
         </div>
-        <div class="content">
-            <div class="reservation-status">
-                <h3>予約状況</h3>
-                <div class="reservation-card">
-                    <div class="reservation-header">
-                        <span></span>
-                        <button class="close-button">&times;</button>
-                    </div>
-                    <div class="reservation-details">
-                        <p>Shop: </p>
-                        <p>Date: </p>
-                        <p>Time: </p>
-                        <p>Number: </p>
+    @endforeach
+
+    <h2>お気に入り店舗</h2>
+    <div class="shop-list">
+            @foreach (auth()->user()->likes as $shop)
+                <div class="shop-card" data-shop-id="{{ $shop->id }}">
+                    <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
+                    <div class="shop-info">
+                        <h2>{{ $shop->name }}</h2>
+                        <p>#{{ $shop->area }} #{{ $shop->genre }}</p>
+                        <button type="button" class="btn btn-danger unlike-button">❤️</button>
                     </div>
                 </div>
-            </div>
-            @if ($favoriteShops && $favoriteShops->isNotEmpty())
-                <div class="favorite-shops">
-                    <h3>お気に入り店舗</h3>
-                    @foreach ($favoriteShops as $shop)
-                        <div class="shop-card">
-                            <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
-                            <div class="shop-info">
-                                <h2>{{ $shop->name }}</h2>
-                                <p>#{{ $shop->area }} #{{ $shop->genre }}</p>
-                                <button class="details-button">詳しく見る</button>
-                                <img src="path/to/heart.png" alt="Like Icon" class="like-icon">
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
+            @endforeach
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/unlike.js') }}"></script>
 @endsection

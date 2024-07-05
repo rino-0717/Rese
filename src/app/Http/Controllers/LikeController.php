@@ -3,24 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Like;
 
 class LikeController extends Controller
 {
-    public function like(Request $request, Shop $shop)
+    public function like($shopId)
     {
-        $shop->likes()->create([
-            'user_id' => auth()->id(),
-        ]);
-
-        return response()->json(['status' => 'liked']);
+        $user = Auth::user();
+        $user->likes()->create(['shop_id' => $shopId]);
+        return redirect()->back();
     }
 
-    public function unlike(Request $request, Shop $shop)
+    public function unlike($shopId)
     {
-        $shop->likes()->where('user_id', auth()->id())->delete();
-
-        return response()->json(['status' => 'unliked']);
+        $user = Auth::user();
+        $user->likes()->where('shop_id', $shopId)->delete();
+        return redirect()->back();
     }
 }

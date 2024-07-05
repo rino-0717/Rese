@@ -46,20 +46,18 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 
 // 飲食店表示
-Route::get('/', [ShopController::class, 'index'])->name('shop');
-Route::get('/{id}', [ShopController::class, 'show'])->name('detail');
-Route::post('/like', [ShopController::class, 'like'])->name('shop.like');
-Route::post('/unlike', [ShopController::class, 'unlike'])->name('shop.unlike');
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::post('/shop/{id}/like', [ShopController::class, 'like'])->name('shop.like');
 
 // お気に入り
-Route::post('/like/{shop}', [LikeController::class, 'like'])->name('like');
-Route::delete('/like/{shop}', [LikeController::class, 'unlike'])->name('unlike');
+Route::post('/like/{shopId}', [LikeController::class, 'like'])->name('like');
+Route::post('/unlike/{shopId}', [LikeController::class, 'unlike'])->name('unlike');
 
 // 予約
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
-Route::post('/reserve', [ReservationController::class, 'create'])->name('reserve.create');
 Route::get('/done', [ReservationController::class, 'completePage'])->name('done');
-Route::post('/reserve/delete', [ReservationController::class, 'delete'])->name('reserve.delete');
+Route::delete('/reservation', [ReservationController::class, 'delete'])->name('reservation.delete');
 
 //メニューページ
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');

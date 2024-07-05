@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReservationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
+use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-        public function store(Request $request)
+    public function store(Request $request)
     {
-        // バリデーション
         $request->validate([
             'shop_id' => 'required|exists:shops,id',
-            'date' => 'required|date|after_or_equal:today',
+            'date' => 'required|date',
             'time' => 'required',
-            'number_of_people' => 'required|integer|min:1',
+            'number' => 'required|integer|min:1',
         ]);
 
-        // 予約データの保存
-        $reservation = new Reservation();
-        $reservation->shop_id = $request->input('shop_id');
-        $reservation->date = $request->input('date');
-        $reservation->time = $request->input('time');
-        $reservation->number = $request->input('number_of_people');
-        $reservation->save();
+        $user = Auth::user();
+        // reservations() メソッドが正しく定義されているか確認
+        $user->reservations()->create([
+            'shop_id' => $request->shop_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'number' => $request->number,
+        ]);
 
-        // 完了ページにリダイレクト
         return redirect()->route('done');
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -31,19 +32,23 @@ class ShopController extends Controller
         ]);
     }
 
-    public function like(Request $request)
+    public function like(Request $request, $id)
     {
-        $shop = Shop::find($request->shop_id);
-        $shop->favorite_shops()->attach(auth()->user()->id);
+        if (!Auth::check()) {
+            return response()->json(['success' => false, 'redirect' => route('login.create')]);
+        }
 
-        return response()->json(['success' => true]);
-    }
+        $shop = Shop::findOrFail($id);
+        $user = Auth::user();
 
-    public function unlike(Request $request)
-    {
-        $shop = Shop::find($request->shop_id);
-        $shop->favorite_shops()->detach(auth()->user()->id);
+        if ($user->likes()->where('shop_id', $id)->exists()) {
+            $user->likes()->detach($id);
+            $liked = false;
+        } else {
+            $user->likes()->attach($id);
+            $liked = true;
+        }
 
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'liked' => $liked]);
     }
 }

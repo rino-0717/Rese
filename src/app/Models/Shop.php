@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Like;
 use App\Models\Reservation;
@@ -30,11 +31,8 @@ class Shop extends Model
         return $this->belongsToMany(User::class, 'likes');
     }
 
-    public function isLikedBy($user)
+    public function likes(): BelongsToMany
     {
-        if (!$user) {
-            return false;
-        }
-        return $this->likedBy()->where('user_id', $user->id)->exists();
+        return $this->belongsToMany(User::class, 'likes');
     }
 }
