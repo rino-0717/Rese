@@ -29,7 +29,7 @@ class ReservationController extends Controller
         // 予約情報をセッションに保存
         $request->session()->put('reservation', $reservation);
 
-        return redirect()->route('reservation.done');
+        return redirect()->route('done');
     }
 
     public function completePage(Request $request)
