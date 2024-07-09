@@ -76,6 +76,7 @@ main {
 .container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -83,6 +84,8 @@ main {
 
 .shop-detail {
     width: 60%;
+    margin-right: 20px;
+    flex: 1;
 }
 
 .shop-detail .header {
@@ -123,25 +126,35 @@ main {
 
 .reservation-form {
     width: 35%;
+    height: 35%;
     background-color: #3477e3;
     color: #fff;
-    padding: 20px;
+
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 20px;
 }
+
 
 .reservation-form h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    margin-top: 10px;
+    margin: 20px 20px 10px 20px;
 }
 
 .reservation-form form {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .reservation-form input,
 .reservation-form select {
     margin-bottom: 10px;
+    margin: 10px 20px 10px 20px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -151,20 +164,26 @@ main {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 120px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right:20px;
 }
 
 .reservation-summary p {
     margin: 5px 0;
 }
 
-.reservation-form button {
+.reservation-form button[type="submit"] {
     background-color: #1e30f4;
     color: #fff;
     border: none;
     cursor: pointer;
     height: 45px;
-    margin-bottom: 0px;
+    width: auto;
+    margin-top: auto;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .reservation-form button:hover {

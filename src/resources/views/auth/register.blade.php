@@ -11,9 +11,9 @@
                 @csrf
                 <div class="input-group">
                     <img src="images/user.png" alt="User Icon" style="width: 24px; height: 24px; margin-right: 8px;">
-                    <input type="text" name="username" id="username" placeholder="Username" value="{{ old('username') }}" required>
-                    @if ($errors->has('username'))
-                        <span class="text-danger">{{ $errors->first('username') }}</span>
+                    <input type="text" name="name" id="name" placeholder="Username" value="{{ old('name') }}" required>
+                    @if ($errors->has('name'))
+                        <span class="text-danger">{{ $errors->first('name') }}</span>
                     @endif
                 </div>
                 <div class="input-group">

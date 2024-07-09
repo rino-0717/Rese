@@ -49,6 +49,8 @@ Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::post('/shop/{id}/like', [ShopController::class, 'like'])->name('shop.like');
+// 検索用のルートを追加
+Route::get('/shop', [ShopController::class, 'search'])->name('shop.search');
 
 // お気に入り
 Route::post('/like/{shopId}', [LikeController::class, 'like'])->name('like');

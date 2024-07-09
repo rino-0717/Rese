@@ -20,10 +20,11 @@ class RegisteredUserController extends Controller
     // ユーザー新規登録処理
     public function store(RegisterRequest $request)
     {
+        // dd('$requestにはどんなデータが入ってる？',$request->all());
         $validator = Validator::make($request->all(), [
-            'username' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8',],
         ]);
 
         if ($validator->fails()) {
@@ -31,7 +32,7 @@ class RegisteredUserController extends Controller
         }
 
         User::create([
-            'username' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

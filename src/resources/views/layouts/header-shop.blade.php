@@ -37,10 +37,12 @@
                         <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
                     @endforeach
                 </select>
-                <form class="search_box">
+                <form class="search_box" action="{{ route('shop') }}" method="GET">
                     <div class="search-container">
-                        <img src="images/glass.png" alt="glass icon" class="search-icon">
-                        <input type="text" placeholder="Search ...">
+                        <input type="text" name="query" placeholder="Search ..." required>
+                        <button type="submit" class="search-icon-button" style="background: none; border: none; padding: 0; cursor: pointer;">
+                            <img src="{{ asset('images/glass.png') }}" alt="glass icon" class="search-icon">
+                        </button>
                     </div>
                 </form>
             </div>
