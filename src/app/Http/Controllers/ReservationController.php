@@ -15,25 +15,34 @@ class ReservationController extends Controller
             'shop_id' => 'required|exists:shops,id',
             'date' => 'required|date',
             'time' => 'required',
-            'number' => 'required|integer|min:1',
+            'number_of_people' => 'required|integer|min:1',
         ]);
 
         $user = Auth::user();
-        // reservations() メソッドが正しく定義されているか確認
-        $user->reservations()->create([
+        $reservation = $user->reservations()->create([
             'shop_id' => $request->shop_id,
             'date' => $request->date,
             'time' => $request->time,
-            'number' => $request->number,
+            'number_of_people' => $request->number_of_people,
         ]);
 
-        return redirect()->route('done');
+        // 予約情報をセッションに保存
+        $request->session()->put('reservation', $reservation);
+
+        return redirect()->route('reservation.done');
     }
 
-    public function completePage()
+    public function completePage(Request $request)
     {
-        // 予約完了ページ表示のロジックをここに記述
-        return view('/done');
+        // セッションから予約情報を取得
+        $reservation = $request->session()->get('reservation');
+
+        // 予約情報が存在しない場合の処理
+        if (!$reservation) {
+            return redirect()->route('shop')->with('error', '予約はありません。');
+        }
+
+        return view('done', compact('reservation'));
     }
 
     public function delete(ReservationRequest $request)

@@ -56,7 +56,7 @@ Route::post('/unlike/{shopId}', [LikeController::class, 'unlike'])->name('unlike
 
 // 予約
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
-Route::get('/done', [ReservationController::class, 'completePage'])->name('done');
+Route::get('/done', [ReservationController::class, 'completePage'])->name('reservation.done');
 Route::delete('/reservation', [ReservationController::class, 'delete'])->name('reservation.delete');
 
 //メニューページ

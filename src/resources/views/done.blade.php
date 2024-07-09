@@ -6,13 +6,8 @@
 
 @section('content')
     <div class="container">
-        <div class="form-container">
-            <h2>ご予約ありがとうございます</h2>
-            <!-- <form action="{{ route('login.create') }}"> -->
-                <div class="button-container">
-                    <button type="submit">戻る</button>
-                </div>
-            </form>
-        </div>
+        <h1>予約が完了しました</h1>
+        <p>ご予約ありがとうございます。</p>
+        <a href="{{ route('shop') }}" class="button">戻る</a>
     </div>
 @endsection

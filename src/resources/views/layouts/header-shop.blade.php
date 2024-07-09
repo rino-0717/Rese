@@ -28,13 +28,13 @@
                 <select name="area" id="area" class="large-select">
                     <option value="all">All area</option>
                     @foreach($areas as $area)
-                        <option value="{{ $area }}">{{ $area }}</option>
+                        <option value="{{ $area->area }}">{{ $area->area }}</option>
                     @endforeach
                 </select>
                 <select name="genre" id="genre" class="large-select">
                     <option value="all">All genre</option>
                     @foreach($genres as $genre)
-                        <option value="{{ $genre }}">{{ $genre }}</option>
+                        <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
                     @endforeach
                 </select>
                 <form class="search_box">
@@ -50,7 +50,7 @@
         @yield('content')
     </main>
     @yield('content')
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/like.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

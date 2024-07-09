@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
@@ -11,8 +12,8 @@ class ShopController extends Controller
     public function index()
     {
         $shops = Shop::with('likedBy')->get();
-        $areas = Shop::select('area')->distinct()->get(); // エリア情報を取得
-        $genres = Shop::select('genre')->distinct()->get(); // ジャンル情報を取得
+        $areas = Shop::select('area')->distinct()->get();
+        $genres = Shop::select('genre')->distinct()->get();
         return view('shop', compact('shops', 'areas', 'genres'));
     }
 
