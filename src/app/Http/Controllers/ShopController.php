@@ -33,26 +33,6 @@ class ShopController extends Controller
         ]);
     }
 
-    public function like(Request $request, $id)
-    {
-        if (!Auth::check()) {
-            return response()->json(['success' => false, 'redirect' => route('login.create')]);
-        }
-
-        $shop = Shop::findOrFail($id);
-        $user = Auth::user();
-
-        if ($user->likes()->where('shop_id', $id)->exists()) {
-            $user->likes()->detach($id);
-            $liked = false;
-        } else {
-            $user->likes()->attach($id);
-            $liked = true;
-        }
-
-        return response()->json(['success' => true, 'liked' => $liked]);
-    }
-
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -62,11 +42,11 @@ class ShopController extends Controller
         $shops = Shop::query();
 
         if ($area && $area !== 'all') {
-            $shops->where('area', $area);
+            $shops->where('area', 'LIKE', "%{$area}%");
         }
 
         if ($genre && $genre !== 'all') {
-            $shops->where('genre', $genre);
+            $shops->where('genre', 'LIKE', "%{$genre}%");
         }
 
         if ($query) {

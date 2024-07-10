@@ -98,13 +98,22 @@ input[type="text"] {
     align-items: center;
 }
 
-.search-container .search-icon {
+img.search-icon {
     position: absolute;
-    left: 10px; /* アイコンの左側のスペース */
-    width: 20px;
-    height: 20px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
-.search-container input {
+.search-container input[type="text"] {
     padding-left: 40px; /* アイコンの幅 + 左側のスペース */
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
 }

@@ -9,7 +9,7 @@ use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    public function store(ReservationRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'shop_id' => 'required|exists:shops,id',

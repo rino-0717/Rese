@@ -5,20 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Like;
+use App\Models\Shop;
 
 class LikeController extends Controller
 {
-    public function like($shopId)
+    public function like(Request $request, $id)
     {
-        $user = Auth::user();
-        $user->likes()->create(['shop_id' => $shopId]);
-        return redirect()->back();
-    }
+        if (!Auth::check()) {
+            return response()->json(['success' => false, 'redirect' => route('login.create')]);
+        }
 
-    public function unlike($shopId)
-    {
+        $shop = Shop::findOrFail($id);
         $user = Auth::user();
-        $user->likes()->where('shop_id', $shopId)->delete();
-        return redirect()->back();
+
+        if ($user->likes()->where('shop_id', $id)->exists()) {
+            $user->likes()->detach($id);
+            $liked = false;
+        } else {
+            $user->likes()->attach($id);
+            $liked = true;
+        }
+
+        return response()->json(['success' => true, 'liked' => $liked]);
     }
 }

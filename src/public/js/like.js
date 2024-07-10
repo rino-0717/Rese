@@ -1,17 +1,18 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const likeButtons = document.querySelectorAll('.like_btn');
 
     likeButtons.forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
             const shopCard = this.closest('.shop-card');
             const shopId = shopCard.getAttribute('data-shop-id');
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            fetch(`/shop/${shopId}/like`, {
+            fetch(`/like/${shopId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    'X-CSRF-TOKEN': token
                 },
                 body: JSON.stringify({ shop_id: shopId })
             })
@@ -20,12 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.success) {
                     const img = this.querySelector('img');
                     if (data.liked) {
-                        img.src = '/images/like_red.png'; // 赤いハートの画像に切り替え
+                        img.src = '/images/liked.png'; // 赤いハートの画像に変更
                     } else {
-                        img.src = '/images/like.png'; // 元の画像に戻す
+                        img.src = '/images/like.png'; // 元のハートの画像に変更
                     }
-                } else if (data.redirect) {
-                    window.location.href = data.redirect;
                 }
             })
             .catch(error => console.error('Error:', error));
