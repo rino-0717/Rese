@@ -15,6 +15,8 @@
 <body>
     <header>
         <a href="{{ auth()->check() ? route('menu') : route('menu2') }}" class="logo">
+        <!-- <a onclick="location.href='{{ Auth::check() ? route('menu') : route('menu2') }}'" class="logo">
+-->
             <div class="logo-icon">
                 <div class="line1"></div>
                 <div class="line2"></div>
