@@ -57,8 +57,8 @@ button:hover {
 }
 
 /* エラーメッセージのスタイル */
-.login-form__error-message {
-    color: #2563eb;
-    font-size: 14px;
-    margin-top: 5px;
+.error-message {
+    color: rgb(67, 178, 230);
+    font-size: 0.875em;
+    margin-top: 0.25em;
 }

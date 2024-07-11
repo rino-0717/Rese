@@ -9,7 +9,7 @@ use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    public function store(Request $request)
+    public function store(ReservationRequest $request)
     {
         $request->validate([
             'shop_id' => 'required|exists:shops,id',
@@ -29,20 +29,7 @@ class ReservationController extends Controller
         // 予約情報をセッションに保存
         $request->session()->put('reservation', $reservation);
 
-        return redirect()->route('reservation.done');
-    }
-
-    public function completePage(Request $request)
-    {
-        // セッションから予約情報を取得
-        $reservation = $request->session()->get('reservation');
-
-        // 予約情報が存在しない場合の処理
-        if (!$reservation) {
-            return redirect()->route('shop')->with('error', '予約情報が見つかりません。');
-        }
-
-        return view('done', compact('reservation'));
+        return redirect()->route('done');
     }
 
     public function delete(ReservationRequest $request)

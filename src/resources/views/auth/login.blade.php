@@ -13,7 +13,7 @@
         @endif
         <div class="form-container">
             <h2>Login</h2>
-            <form class="login-form" action="{{ route('login.store') }}" method="post">
+            <form class="login-form" action="{{ route('login.store') }}" method="post" novalidate>
                 @csrf
                 <div class="input-group">
                     <img src="images/mail.png" alt="Mail Icon" style="width: 24px; height: 24px; margin-right: 8px;">

@@ -1,6 +1,6 @@
 .form-container {
     background-color: white;
-    background: linear-gradient(to bottom, #3477e3 0%, #3477e3 30%, white 0%, white 80%);
+    background: linear-gradient(to bottom, #3477e3 0%, #3477e3 28%, white 0%, white 80%);
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,7 @@
 .form-container h2 {
     color: white;
     padding: 10px;
-    margin-top: 0%;
+    margin: auto;
     border-radius: 5px;
 }
 
@@ -62,12 +62,4 @@ button:hover {
     color: #3b82f6;
     font-size: 14px;
     margin-top: 5px;
-    /* メッセージと入力フィールドの間にスペースを追加 */
-}
-
-.alert {
-    color: #3b82f6;
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: center;
 }

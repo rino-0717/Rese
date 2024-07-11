@@ -27,7 +27,7 @@
         <div class="container">
             <div class="shop-detail">
                 <div class="header">
-                    <a href="{{ route('shop') }}" class="back-button">&lt;</a>
+                    <a href="{{ route('reservations.store') }}" class="back-button">&lt;</a>
                     <h1>{{ $shop->name }}</h1>
                 </div>
                 <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
@@ -36,7 +36,7 @@
             </div>
             <div class="reservation-form">
                 <h2>予約</h2>
-                <form action="{{ route('reservations.store') }}" method="POST">
+                <form method="POST" action="{{ route('reservations.store') }}" novalidate>
                     @csrf
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     <label for="date"></label>
