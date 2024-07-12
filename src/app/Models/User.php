@@ -3,11 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Like;
-use App\Models\Reservation;
 
 class User extends Authenticatable
 {
@@ -19,12 +16,21 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
 
-    public function likes(): BelongsToMany
+    public function likes()
     {
         return $this->belongsToMany(Shop::class, 'likes');
     }

@@ -21,18 +21,23 @@ class Shop extends Model
         'introduction',
     ];
 
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id');
+    }
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
 
-    public function likedBy()
-    {
-        return $this->belongsToMany(User::class, 'likes');
-    }
+    // public function likedBy()
+    // {
+    //     return $this->belongsToMany(User::class, 'likes');
+    // }
 
-    public function likes(): BelongsToMany
+    public function likes()
     {
-        return $this->belongsToMany(User::class, 'likes');
+        return $this->hasMany(Like::class);
     }
 }

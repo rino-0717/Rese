@@ -27,7 +27,7 @@
         <div class="container">
             <div class="shop-detail">
                 <div class="header">
-                    <a href="{{ route('reservations.store') }}" class="back-button">&lt;</a>
+                    <a href="{{ route('shop') }}" class="back-button">&lt;</a>
                     <h1>{{ $shop->name }}</h1>
                 </div>
                 <img src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
@@ -36,21 +36,32 @@
             </div>
             <div class="reservation-form">
                 <h2>予約</h2>
-                <form method="POST" action="{{ route('reservations.store') }}" novalidate>
+                <form method="POST" action="{{ route('reservation.store') }}" novalidate>
                     @csrf
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     <label for="date"></label>
                     <input type="date" id="date" name="date" required>
+                    @error('date')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                     <label for="time"></label>
                     <select id="time" name="time" required>
+                        <option value="" disabled selected>予約時間</option>
                         <!-- JavaScriptでオプションを動的に生成 -->
                     </select>
+                    @error('time')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                     <label for="number_of_people"></label>
                     <select id="number_of_people" name="number_of_people" required>
+                        <option value="" disabled selected>予約人数</option>
                         @for ($i = 1; $i <= 100; $i++)
                             <option value="{{ $i }}">{{ $i }}人</option>
                         @endfor
                     </select>
+                    @error('number_of_people')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                     <div class="reservation-summary">
                         <p>Shop: {{ $shop->name }}</p>
                         <p>Date: <span id="summary-date"></span></p>

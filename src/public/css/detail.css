@@ -189,3 +189,9 @@ main {
 .reservation-form button:hover {
     background-color: #1c2bb3;
 }
+
+.error-message {
+    color: #fff;
+    font-size: 15px;
+    margin-left: 17px;
+}

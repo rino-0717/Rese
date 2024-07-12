@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    protected $fillable = ['shop_id', 'user_id'];
+    use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'shop_id',
+    ];
 
     public function user()
     {
