@@ -44,6 +44,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 // マイページ
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
+Route::delete('/mypage/{reservation}', [UserController::class, 'destroy'])->name('destroy');
 
 // 飲食店表示
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
@@ -59,7 +60,7 @@ Route::post('/unlike/{shopId}', [LikeController::class, 'unlike'])->name('unlike
 // 予約
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 Route::get('/done', [ReservationController::class, 'completePage'])->name('done');
-Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.delete');
+Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 
 //メニューページ
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');

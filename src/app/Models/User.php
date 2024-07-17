@@ -25,6 +25,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function shop()
+        {
+            return $this->belongsTo(Shop::class);
+        }
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
@@ -32,6 +37,11 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->belongsToMany(Shop::class, 'likes');
+        return $this->hasMany(Like::class);
+    }
+
+    public function likedby()
+    {
+        return $this->belongsToMany(User::class, 'likes', 'shop_id', 'user_id');
     }
 }

@@ -31,13 +31,13 @@ class Shop extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    // public function likedBy()
-    // {
-    //     return $this->belongsToMany(User::class, 'likes');
-    // }
-
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function likedBy()
+    {
+        return $this->belongsToMany(User::class, 'likes');
     }
 }
