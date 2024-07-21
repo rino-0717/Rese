@@ -44,7 +44,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 // マイページ
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
-Route::delete('/mypage/{reservation}', [UserController::class, 'destroy'])->name('destroy');
+Route::delete('/mypage/{reservation}', [UserController::class, 'destroy'])->name('reservations.destroy');
 
 // 飲食店表示
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');

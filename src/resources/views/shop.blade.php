@@ -2,7 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
-    <link rel="stylesheet" href="{{ asset('images/like.css') }}">
+    <link rel="stylesheet" href="{{ asset('images/like.png') }}">
 @endsection
 
 @section('content')
